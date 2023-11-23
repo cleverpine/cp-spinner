@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 
 import { LhtSpinnerComponent } from './lht-spinner.component';
-import { LoadingService } from './loading.service';
 
 @NgModule({
-  declarations: [LhtSpinnerComponent, LoadingService],
+  declarations: [LhtSpinnerComponent],
   imports: [],
-  exports: [LhtSpinnerComponent, LoadingService],
+  exports: [LhtSpinnerComponent],
 })
 export class CpSpinnerModule {}
