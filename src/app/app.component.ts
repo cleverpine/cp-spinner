@@ -1,10 +1,15 @@
 import { Component } from '@angular/core';
 
+import { LoadingService } from 'projects/cp-lht-spinner/src/lib/loading.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'cp-spinner';
+  constructor(private loadingService: LoadingService) {}
+
+  ngOnInit() {
+    this.loadingService.show();
+  }
 }

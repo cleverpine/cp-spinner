@@ -4,3 +4,4 @@
 
 export * from './lib/lht-spinner.component';
 export * from './lib/lht-spinner.module';
+export * from './lib/loading.service';

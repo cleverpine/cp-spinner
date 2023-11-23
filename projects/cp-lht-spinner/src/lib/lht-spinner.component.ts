@@ -6,5 +6,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./lht-spinner.component.scss'],
 })
 export class LhtSpinnerComponent {
-  @Input() size = 100;
+  size = 100;
 }
