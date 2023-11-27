@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Overlay, OverlayRef } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
 
-import { LhtSpinnerComponent } from 'projects/cp-lht-spinner/src/lib/lht-spinner.component';
+import { LhtSpinnerComponent } from '../lib/lht-spinner.component';
 
 @Injectable({
   providedIn: 'root',

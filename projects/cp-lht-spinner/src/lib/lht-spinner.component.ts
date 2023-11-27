@@ -1,7 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'lht-spinner',
+  selector: 'cp-lht-spinner',
   templateUrl: './lht-spinner.component.html',
   styleUrls: ['./lht-spinner.component.scss'],
 })
