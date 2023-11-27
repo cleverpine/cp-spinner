@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { LoadingService } from 'projects/cp-lht-spinner/src/lib/loading.service';
+import { LoadingService } from 'cp-lht-spinner';
 
 @Component({
   selector: 'app-root',
