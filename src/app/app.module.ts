@@ -3,12 +3,17 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 
-import { LhtSpinnerComponent } from 'projects/cp-lht-spinner/src/lib/lht-spinner.component';
+import { LhtSpinnerModule } from 'cp-lht-spinner';
 
 @NgModule({
-  declarations: [AppComponent, LhtSpinnerComponent],
-  imports: [BrowserModule],
-  providers: [],
+  declarations: [AppComponent],
+  imports: [
+    BrowserModule,
+    LhtSpinnerModule.forRoot({
+      spinnerDelayTime: 300,
+      spinnerSize: 100,
+    }),
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

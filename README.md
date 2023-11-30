@@ -1,27 +1,114 @@
-# CpSpinner
+# Lht Spinner Loading Service
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.0.
+Lht Spinner Loading Service is a service that loads default LHT spinner component on demand.
 
-## Development server
+## Library Dependencies
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Before using the Lht Spinner Loading Service, make sure you have the following dependencies installed in your project:
 
-## Code scaffolding
+- **@angular/core**: Version 15.0.0 or higher
+- **@angular/common**: Version 15.0.0 or higher
+- **@angular/cdk**: Version 15.0.0 or higher
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Make sure to include these dependencies in your project's package.json file
 
-## Build
+# Getting started with Lht Spinner Loading Service
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+This guide explains how to set up your project to use the Lht Spinner Loading Service. It covers prerequisites, installation steps, and configuration details.
 
-## Running unit tests
+## Prerequisites
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Ensure you have the latest version of npm installed in your project. The Lht Spinner Loading Service is available through npm.
 
-## Running end-to-end tests
+## Installation
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Install the Lht Spinner Loading Service using the npm command:
 
-## Further help
+        npm install cp-lht-spinner
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+> This command adds the project dependencies to your package.json file.
+
+## Usage
+
+To use the Lht Spinner Loading Service, follow these steps:
+
+### 1. **Add the Lht Spinner module to your module and provide configs if needed**
+
+There are no required parameters, if you want to add none just provide <b>empty object</b>.
+<br/><br/>
+Add the following to your @NgModule imports:
+
+```js
+.....imports
+
+import { LhtSpinnerModule } from 'cp-lht-spinner';
+
+@NgModule({
+  declarations: [AppComponent],
+  imports: [
+    BrowserModule,
+    LhtSpinnerModule.forRoot({
+      spinnerDelayTime: 300, // optional
+      spinnerSize: 100, // optional
+    }),
+  ],
+  bootstrap: [AppComponent],
+})
+
+export class AppModule {}
+```
+
+The configuration model is defined as follows:
+
+```ts
+export interface LhtSpinnerLibConfig {
+  readonly spinnerDelayTime?: number;
+  // Use this if you want to add delay before loading the spinner
+
+  readonly spinnerSize?: number;
+  // Use this if you want to make the spinner smaller or larger
+}
+```
+
+---
+
+### 2. Add the Lht Spinner service module to your interceptor or whatever you want to use it
+
+```js
+//Example usage
+
+...other improts
+
+import { LoadingService } from 'cp-lht-spinner';
+
+@Injectable()
+export class ApiInterceptor implements HttpInterceptor {
+  constructor(
+    private localStorageService: LocalStorageService,
+    ...other constructor parameters
+  ) {}
+
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    this.loadingService.show();
+
+      //...your current logic
+
+    return next.handle(req).pipe(
+      tap({
+      //...your current logic
+      }),
+      catchError((err: HttpErrorResponse) => {
+        //...your current logic
+      }),
+      finalize(() => this.loadingService.hide()),
+    );
+  }
+}
+
+```
+
+## 3. Test your application
+
+You can test your application using Angular's built-in server:
+
+> ng serve
