@@ -84,7 +84,7 @@ import { LoadingService } from 'cp-lht-spinner';
 @Injectable()
 export class ApiInterceptor implements HttpInterceptor {
   constructor(
-    private localStorageService: LocalStorageService,
+    private loadingService: LoadingService,
     ...other constructor parameters
   ) {}
 
