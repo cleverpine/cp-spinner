@@ -11,4 +11,6 @@ export class LhtSpinnerComponent {
   constructor(private lhtSpinnerSettingsService: LhtSpinnerSettingsService) {}
 
   size = this.lhtSpinnerSettingsService.libConfig.spinnerSize || 100;
+  loadingText =
+    this.lhtSpinnerSettingsService.libConfig.spinnerLoadingText || 'Loading...';
 }

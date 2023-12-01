@@ -12,6 +12,7 @@ import { LhtSpinnerModule } from 'cp-lht-spinner';
     LhtSpinnerModule.forRoot({
       spinnerDelayTime: 300,
       spinnerSize: 100,
+      spinnerLoadingText: 'Custom text',
     }),
   ],
   bootstrap: [AppComponent],

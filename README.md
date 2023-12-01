@@ -50,6 +50,7 @@ import { LhtSpinnerModule } from 'cp-lht-spinner';
     LhtSpinnerModule.forRoot({
       spinnerDelayTime: 300, // optional
       spinnerSize: 100, // optional
+      spinnerLoadingText: 'Custom text', // optional
     }),
   ],
   bootstrap: [AppComponent],
@@ -63,10 +64,13 @@ The configuration model is defined as follows:
 ```ts
 export interface LhtSpinnerLibConfig {
   readonly spinnerDelayTime?: number;
-  // Use this if you want to add delay before loading the spinner
+  // Use this if you want to add delay before loading the spinner, im milliseconds
 
   readonly spinnerSize?: number;
   // Use this if you want to make the spinner smaller or larger
+
+  readonly spinnerLoadingText?: string;
+  // Use this if you want to change the text below the spinner
 }
 ```
 
@@ -79,12 +83,12 @@ export interface LhtSpinnerLibConfig {
 
 ...other improts
 
-import { LoadingService } from 'cp-lht-spinner';
+import { LhtLoadingService } from 'cp-lht-spinner';
 
 @Injectable()
 export class ApiInterceptor implements HttpInterceptor {
   constructor(
-    private loadingService: LoadingService,
+    private loadingService: LhtLoadingService,
     ...other constructor parameters
   ) {}
 
