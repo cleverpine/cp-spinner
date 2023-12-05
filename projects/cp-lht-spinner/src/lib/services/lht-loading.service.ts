@@ -19,11 +19,18 @@ export class LhtLoadingService {
     private lhtSpinnerSettingsService: LhtSpinnerSettingsService
   ) {}
 
-  show(): void {
+  show(spinnerLoadingText?: string): void {
     this.requestsCount++;
 
     const delayTime =
       this.lhtSpinnerSettingsService.libConfig.spinnerDelayTime || 0;
+
+    if (spinnerLoadingText) {
+      this.lhtSpinnerSettingsService.setLibConfig({
+        ...this.lhtSpinnerSettingsService.libConfig,
+        spinnerLoadingText,
+      });
+    }
 
     if (!this.overlayRef) {
       this.overlayRef = this.overlay.create();

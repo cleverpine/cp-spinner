@@ -10,6 +10,6 @@ export class AppComponent {
   constructor(private loadingService: LhtLoadingService) {}
 
   ngOnInit() {
-    this.loadingService.show();
+    this.loadingService.show('You can set the show text here also.');
   }
 }

@@ -74,6 +74,17 @@ export interface LhtSpinnerLibConfig {
 }
 ```
 
+Different way to set the spinnerLoadingText (it is useful if you need to use translations):
+
+The .show() method of the service accept 1 optional string argument.
+
+```ts
+
+this.loadingService.show('Add here the loading spinner text you want to show');
+----
+this.loadingService.show(this.translationService?.instant('common.spinnerLoadingText'));
+```
+
 ---
 
 ### 2. Add the Lht Spinner service module to your interceptor or whatever you want to use it
