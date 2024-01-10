@@ -20,5 +20,5 @@ extends:
   template: pipeline-fe-library.yaml@templates
   parameters:
     libraryName: 'cp-lht-spinner'
-    installCommand: 'i'
+    installCommand: 'install --legacy-peer-deps'
 
