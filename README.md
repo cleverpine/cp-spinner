@@ -12,6 +12,11 @@ Before using the Lht Spinner Loading Service, make sure you have the following d
 
 Make sure to include these dependencies in your project's package.json file
 
+**WARNING:** <br/>
+For Angular Version **16** or lower -> use 0.0.11 version of the LHT spinner
+<br>
+For Angular Version **17** or higher -> use the latest version of the LHT spinner
+
 # Getting started with Lht Spinner Loading Service
 
 This guide explains how to set up your project to use the Lht Spinner Loading Service. It covers prerequisites, installation steps, and configuration details.
@@ -79,9 +84,10 @@ Different way to set the spinnerLoadingText (it is useful if you need to use tra
 The .show() method of the service accept 1 optional string argument.
 
 ```ts
-
+// Example 1:
 this.loadingService.show('Add here the loading spinner text you want to show');
-----
+--------------------------------------------------------------------------------------
+// Example 2:
 this.loadingService.show(this.translationService?.instant('common.spinnerLoadingText'));
 ```
 
