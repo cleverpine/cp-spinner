@@ -20,4 +20,5 @@ extends:
   template: pipeline-fe-library.yaml@templates
   parameters:
     libraryName: 'cp-lht-spinner'
-    legacyInstall: true
+    installCommand: 'i'
+
