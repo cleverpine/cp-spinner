@@ -53,7 +53,8 @@ import { LhtSpinnerModule } from 'cp-lht-spinner';
   imports: [
     BrowserModule,
     LhtSpinnerModule.forRoot({
-      spinnerDelayTime: 300, // optional
+      spinnerShowDelayTime: 300, // optional
+      spinnerHideDelayTime: 200, // optional
       spinnerSize: 100, // optional
       spinnerLoadingText: 'Custom text', // optional
     }),
@@ -68,8 +69,11 @@ The configuration model is defined as follows:
 
 ```ts
 export interface LhtSpinnerLibConfig {
-  readonly spinnerDelayTime?: number;
+  readonly spinnerShowDelayTime?: number;
   // Use this if you want to add delay before loading the spinner, im milliseconds
+
+  readonly spinnerHideDelayTime?: number;
+  // Use this if you want to add delay after loading the spinner, im milliseconds
 
   readonly spinnerSize?: number;
   // Use this if you want to make the spinner smaller or larger
