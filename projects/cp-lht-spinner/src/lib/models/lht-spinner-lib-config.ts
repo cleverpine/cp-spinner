@@ -1,5 +1,6 @@
 export interface LhtSpinnerLibConfig {
-  readonly spinnerDelayTime?: number;
+  readonly spinnerShowDelayTime?: number;
+  readonly spinnerHideDelayTime?: number;
   readonly spinnerSize?: number;
   readonly spinnerLoadingText?: string;
 }

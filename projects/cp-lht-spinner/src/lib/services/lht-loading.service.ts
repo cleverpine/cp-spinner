@@ -13,6 +13,7 @@ export class LhtLoadingService {
   private overlayRef: OverlayRef | null = null;
   private requestsCount = 0;
   private showTimer: any = null;
+  private hideTimer: any = null;
 
   constructor(
     private overlay: Overlay,
@@ -23,7 +24,7 @@ export class LhtLoadingService {
     this.requestsCount++;
 
     const delayTime =
-      this.lhtSpinnerSettingsService.libConfig.spinnerDelayTime || 0;
+      this.lhtSpinnerSettingsService.libConfig.spinnerShowDelayTime || 0;
 
     if (spinnerLoadingText) {
       this.lhtSpinnerSettingsService.setLibConfig({
@@ -34,6 +35,12 @@ export class LhtLoadingService {
 
     if (!this.overlayRef) {
       this.overlayRef = this.overlay.create();
+    }
+
+    if (this.hideTimer) {
+      clearTimeout(this.hideTimer);
+      this.hideTimer = null;
+      return;
     }
 
     if (this.showTimer === null) {
@@ -59,8 +66,21 @@ export class LhtLoadingService {
       this.requestsCount = 0;
 
       if (this.overlayRef && this.overlayRef.hasAttached()) {
-        this.overlayRef.detach();
+        this.removeOverlayRef(this.overlayRef);
       }
+    }
+  }
+
+  private removeOverlayRef(overlayRef: OverlayRef): void {
+    const hideDelay =
+      this.lhtSpinnerSettingsService.libConfig.spinnerHideDelayTime;
+
+    if (hideDelay) {
+      this.hideTimer = setTimeout(() => {
+        overlayRef.detach();
+      }, hideDelay);
+    } else {
+      overlayRef.detach();
     }
   }
 
