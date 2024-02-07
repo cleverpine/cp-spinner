@@ -23,7 +23,7 @@ export class LhtLoadingService {
   show(spinnerLoadingText?: string): void {
     this.requestsCount++;
 
-    const delayTime =
+    const showDelayTime =
       this.lhtSpinnerSettingsService.libConfig.spinnerShowDelayTime || 0;
 
     if (spinnerLoadingText) {
@@ -44,10 +44,10 @@ export class LhtLoadingService {
     }
 
     if (this.showTimer === null) {
-      if (delayTime > 0) {
+      if (showDelayTime > 0) {
         this.showTimer = setTimeout(() => {
           this.attachSpinner();
-        }, delayTime);
+        }, showDelayTime);
       } else {
         this.attachSpinner();
       }
@@ -72,13 +72,14 @@ export class LhtLoadingService {
   }
 
   private removeOverlayRef(overlayRef: OverlayRef): void {
-    const hideDelay =
+    const hideDelayTime =
       this.lhtSpinnerSettingsService.libConfig.spinnerHideDelayTime;
 
-    if (hideDelay) {
+    if (hideDelayTime) {
       this.hideTimer = setTimeout(() => {
         overlayRef.detach();
-      }, hideDelay);
+        this.hideTimer = null;
+      }, hideDelayTime);
     } else {
       overlayRef.detach();
     }
