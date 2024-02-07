@@ -1,9 +1,6 @@
 trigger:
   - main
-  - develop
-  - stage
-  - release*
-  - feature*
+
 
 pr: none
 
