@@ -10,7 +10,7 @@ import { LhtSpinnerModule } from 'cp-lht-spinner';
   imports: [
     BrowserModule,
     LhtSpinnerModule.forRoot({
-      spinnerDelayTime: 300,
+      spinnerShowDelayTime: 300,
       spinnerSize: 100,
       spinnerLoadingText: 'Custom text',
     }),
