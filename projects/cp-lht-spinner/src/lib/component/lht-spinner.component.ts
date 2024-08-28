@@ -8,7 +8,7 @@ import { LhtSpinnerSettingsService } from '../services/lht-spinner-settings.serv
   styleUrls: ['./lht-spinner.component.scss'],
 })
 export class LhtSpinnerComponent implements OnInit {
-  size = this.lhtSpinnerSettingsService.libConfig.spinnerSize || 100 + 'px';
+  size = this.lhtSpinnerSettingsService.libConfig.spinnerSize || 100;
   loadingText = this.lhtSpinnerSettingsService.libConfig.spinnerLoadingText || 'Loading...';
 
   constructor(private lhtSpinnerSettingsService: LhtSpinnerSettingsService) {}
