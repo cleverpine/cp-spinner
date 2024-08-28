@@ -15,6 +15,11 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+
+    .spinner-size {
+      width: var(--spinner-size);
+      height: var(--spinner-size);
+    }
   }
 
   .lht-spinner-ring {
