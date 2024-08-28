@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 
 import { LhtSpinnerComponent } from './component/lht-spinner.component';
@@ -8,19 +9,14 @@ import { LhtSpinnerSettingsService } from '../lib/services/lht-spinner-settings.
 
 @NgModule({
   declarations: [LhtSpinnerComponent],
-  imports: [],
+  imports: [CommonModule],
   exports: [LhtSpinnerComponent],
 })
 export class LhtSpinnerModule {
-  static forRoot(
-    config: LhtSpinnerLibConfig
-  ): ModuleWithProviders<LhtSpinnerModule> {
+  static forRoot(config: LhtSpinnerLibConfig): ModuleWithProviders<LhtSpinnerModule> {
     return {
       ngModule: LhtSpinnerModule,
-      providers: [
-        LhtSpinnerSettingsService,
-        { provide: 'config', useValue: config },
-      ],
+      providers: [LhtSpinnerSettingsService, { provide: 'config', useValue: config }],
     };
   }
 }
